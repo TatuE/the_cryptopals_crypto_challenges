@@ -7,3 +7,7 @@ For the sake of convenience and manageability, it was moved to it's own reposito
 The assignment is simple, solve four (4) challenges from the challenge set 1,  more can be found from the courses website : [Trust to blockchainh - 3 Hash](https://terokarvinen.com/trust-to-blockchain/#h3-hash) (The sub assignment in question is **(h**.
 
 The crypo challenges can be found their website: [the cryptopals crypto challenges](https://www.cryptopals.com/)
+
+## Binary files
+
+The compiled binaries can be found from [bin](https://github.com/TatuE/the_cryptopals_crypto_challenges/tree/main/bin) folder. 
