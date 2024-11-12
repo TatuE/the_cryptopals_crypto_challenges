@@ -10,4 +10,4 @@ The crypo challenges can be found their website: [the cryptopals crypto challeng
 
 ## Binary files
 
-The compiled binaries can be found from [bin](https://github.com/TatuE/the_cryptopals_crypto_challenges/tree/main/bin) folder. 
+The compiled binaries can be found from the [bin](https://github.com/TatuE/the_cryptopals_crypto_challenges/tree/main/bin) folder. 
