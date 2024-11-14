@@ -1,4 +1,5 @@
 mod utils;
+mod crypto_tools;
 
 const PRINT_L: u32 = 50;
 
@@ -63,20 +64,11 @@ fn check_numeric_option_selectd(option_n: u32, min_value: u32, max_value: u32) -
     c
 }
 
-fn display_processing(){
-    utils::print_new_lines(2);
-    utils::print_symbol(PRINT_L,'*');
-    println!("Processing....");
-    utils::print_symbol(PRINT_L,'*');
-    utils::print_new_lines(2);
-    utils::sleep_for_seconds(1);
-    println!("Processing complete!");
-}
-
 fn challenge_1(){
     let mut option_selected_n: u32;
+    let mut own_hex: String;
     'outer: loop {
-        let mut challenge_hex_s: String = String::from("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d");
+        let mut challenge_hex_s:&str = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d";
         utils::clear_c();
         utils::print_new_lines(2);
         utils::print_with_spaces(PRINT_L, "Challenge 1 : Convert hex to base64.");
@@ -98,18 +90,20 @@ fn challenge_1(){
 
                 }else if option_selected_n == 2 {
                     println!("You have chosen to use you're own hexadecimal value.");
-                    challenge_hex_s = utils::get_string_input();
+                    own_hex = utils::get_string_input();
+                    challenge_hex_s = own_hex.as_str();
                 }
 
-                let s = challenge_hex_s.clone();
+                let b64:String = crypto_tools::convert_hex_to_base64(challenge_hex_s);
 
-                let b64:String = base64::encode(hex::decode(challenge_hex_s).unwrap());
-
-                display_processing();
-
-                println!("The used the hexadecimal value :  {}", s);
+                utils::display_processing(5, PRINT_L);
+                
+                utils::print_new_lines(2);
+                println!("The used the hexadecimal value : {}", challenge_hex_s);
                 println!("The base64 convertion is : {}", b64);
-                utils::sleep_for_seconds(5);
+                utils::print_new_lines(2);
+                utils::get_any_input("Press enter to end reviewing.");
+
                 'inner: loop {
                     utils::clear_c();
                     utils::print_new_lines(2);
