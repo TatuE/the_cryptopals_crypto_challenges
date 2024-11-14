@@ -75,7 +75,7 @@ fn challenge_1(){
         utils::print_symbol(PRINT_L,'*');
         utils::print_new_lines(2);
         println!("Convert a hexadecimal string to base64.");
-        println!("Would you like use the default hexadecimal value or input you're own? ");
+        println!("Would you like use the default hexadecimal value in the challenge or input you're own? ");
         println!("Option 1: Use the default hexadecimal value : {}.", challenge_hex_s);
         println!("Option 2: Input you're own hexadecimal value.");
         println!("Option 0: Return to main menu.");
@@ -86,7 +86,7 @@ fn challenge_1(){
         if check_numeric_option_selectd(option_selected_n, 0, 2){
             if option_selected_n !=0 {
                 if option_selected_n == 1 {
-                    println!("You have chosen to use the default hexadecimal value : {}.", challenge_hex_s);
+                    println!("You have chosen to use the default hexadecimal value : {} .", challenge_hex_s);
 
                 }else if option_selected_n == 2 {
                     println!("You have chosen to use you're own hexadecimal value.");
@@ -138,11 +138,30 @@ fn challenge_1(){
 }
 
 fn challenge_2(){
-    utils::clear_c();
-    utils::print_new_lines(2);
-    utils::print_with_spaces(PRINT_L, "Challenge 2 = Fixed XOR.");
-    utils::print_symbol(PRINT_L,'*');
-    utils::print_new_lines(2);    
+    let mut option_selected_n: u32;
+    let mut own_hex_1: String;
+    let mut own_hex_2: String;
+
+    'outer: loop {
+        let mut challenge_hex_s_1:&str = "1c0111001f010100061a024b53535009181c";
+        let mut challenge_hex_s_2:&str = "686974207468652062756c6c277320657965";
+        utils::clear_c();
+        utils::print_new_lines(2);
+        utils::print_with_spaces(PRINT_L, "Challenge 2 = Fixed XOR.");
+        utils::print_symbol(PRINT_L,'*');
+        utils::print_new_lines(2);
+
+        println!("Fixed XOR.");
+        println!("Would you like use the default hexadecimal values in the challenge or input you're own? ");
+        println!("Option 1: Use the default hexadecimal values:");
+        println!("      Hexadecimal 1 value : {} .", challenge_hex_s_1);
+        println!("      Hexadecimal 2 value : {} .", challenge_hex_s_2);
+        println!("Option 2: Input you're own hexadecimal value.");
+        println!("Option 0: Return to main menu.");
+        utils::print_new_lines(1);
+
+        option_selected_n = utils::get_numeric_input();
+    }
 }
 
 fn challenge_3(){
