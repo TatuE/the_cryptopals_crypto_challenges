@@ -161,6 +161,10 @@ fn challenge_2(){
         utils::print_new_lines(1);
 
         option_selected_n = utils::get_numeric_input();
+        
+        if check_numeric_option_selectd(option_selected_n, 0, 2){
+            
+        }
     }
 }
 
