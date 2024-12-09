@@ -76,7 +76,7 @@ fn challenge_1(){
         utils::print_new_lines(2);
         println!("Convert a hexadecimal string to base64.");
         println!("Would you like use the default hexadecimal value in the challenge or input you're own? ");
-        println!("Option 1: Use the default hexadecimal value : {}.", challenge_hex_s);
+        println!("Option 1: Use the default hexadecimal value in the challenge : {}.", challenge_hex_s);
         println!("Option 2: Input you're own hexadecimal value.");
         println!("Option 0: Return to main menu.");
         utils::print_new_lines(1);
@@ -156,7 +156,7 @@ fn challenge_2(){
         println!("Option 1: Use the default hexadecimal values:");
         println!("      Hexadecimal 1 value : {} .", challenge_hex_s_1);
         println!("      Hexadecimal 2 value : {} .", challenge_hex_s_2);
-        println!("Option 2: Input you're own hexadecimal value.");
+        println!("Option 2: Input you're own hexadecimal values.");
         println!("Option 0: Return to main menu.");
         utils::print_new_lines(1);
 
