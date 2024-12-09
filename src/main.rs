@@ -164,6 +164,10 @@ fn challenge_2(){
         
         if check_numeric_option_selectd(option_selected_n, 0, 2){
             
+        }else{
+            println!("Returning to main menu.");
+            utils::sleep_for_seconds(1);
+            break 'outer;
         }
     }
 }
@@ -174,6 +178,7 @@ fn challenge_3(){
     utils::print_with_spaces(PRINT_L, "Challenge 3 = Single-byte XOR cipher.");
     utils::print_symbol(PRINT_L,'*');
     utils::print_new_lines(2);
+    utils::display_under_construction(PRINT_L);
 }
 
 fn challenge_4(){
@@ -181,7 +186,8 @@ fn challenge_4(){
     utils::print_new_lines(2);
     utils::print_with_spaces(PRINT_L, "Challenge 4 = Detect single-character XOR.");
     utils::print_symbol(PRINT_L,'*');
-    utils::print_new_lines(2);    
+    utils::print_new_lines(2);
+    utils::display_under_construction(PRINT_L);  
 }
 
 fn exit_program(){

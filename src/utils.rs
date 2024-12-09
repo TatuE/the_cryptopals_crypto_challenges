@@ -119,6 +119,15 @@ pub fn display_processing(time_in_seconds:u64,print_length:u32){
     clear_c();
 }
 
+pub fn display_under_construction(print_length:u32){
+    print_new_lines(2);
+    print_symbol(print_length, '*');
+    print_new_lines(1);
+    print_with_spaces(print_length, "This task is still under construction!");
+    print_new_lines(1);
+    print_symbol(print_length, '*');
+    sleep_for_seconds(2)
+}
 //////////////////////////////////////////////////////////////
 ///               System functions                         ///
 //////////////////////////////////////////////////////////////
