@@ -86,13 +86,16 @@ fn challenge_1(){
         if check_numeric_option_selectd(option_selected_n, 0, 2){
             if option_selected_n !=0 {
                 if option_selected_n == 1 {
-                    println!("You have chosen to use the default hexadecimal value : {} .", challenge_hex_s);
+                    println!("You have chosen to use the default hexadecimal value : {}", challenge_hex_s);
 
                 }else if option_selected_n == 2 {
                     println!("You have chosen to use you're own hexadecimal value.");
                     own_hex = utils::get_string_input();
                     challenge_hex_s = own_hex.as_str();
                 }
+
+                utils::print_new_lines(2);
+                utils::sleep_for_seconds(1);
 
                 let b64:String = crypto_tools::convert_hex_to_base64(challenge_hex_s);
 
@@ -154,20 +157,69 @@ fn challenge_2(){
         println!("Fixed XOR.");
         println!("Would you like use the default hexadecimal values in the challenge or input you're own? ");
         println!("Option 1: Use the default hexadecimal values:");
-        println!("      Hexadecimal 1 value : {} .", challenge_hex_s_1);
-        println!("      Hexadecimal 2 value : {} .", challenge_hex_s_2);
-        println!("Option 2: Input you're own hexadecimal values.");
+        println!("      Hexadecimal 1 value : {}", challenge_hex_s_1);
+        println!("      Hexadecimal 2 value : {}", challenge_hex_s_2);
+        //println!("Option 2: Input you're own hexadecimal values.");
         println!("Option 0: Return to main menu.");
         utils::print_new_lines(1);
 
         option_selected_n = utils::get_numeric_input();
         
-        if check_numeric_option_selectd(option_selected_n, 0, 2){
-            
-        }else{
-            println!("Returning to main menu.");
-            utils::sleep_for_seconds(1);
-            break 'outer;
+        if check_numeric_option_selectd(option_selected_n, 0, 1){
+            if option_selected_n !=0 {
+                if option_selected_n == 1 {
+                    println!("You have chosen to use the default hexadecimal values");
+                    println!("      Hexadecimal 1 value : {}", challenge_hex_s_1);
+                    println!("      Hexadecimal 2 value : {}", challenge_hex_s_2);
+                }else if option_selected_n == 2 {
+                    println!("You have chosen to use you're own hexadecimal values.");
+                    
+                }
+
+                utils::print_new_lines(2);
+                utils::sleep_for_seconds(1);
+
+                let xored:String = crypto_tools::fixed_xor(challenge_hex_s_1, challenge_hex_s_2);
+
+                utils::display_processing(5, PRINT_L);
+                
+                utils::print_new_lines(2);
+                println!("The used the hexadecimal values");
+                println!("      Hexadecimal 1 value : {}", challenge_hex_s_1);
+                println!("      Hexadecimal 2 value : {}", challenge_hex_s_2);
+                println!("The base64 convertion is : {}", xored);
+                utils::print_new_lines(2);
+                utils::get_any_input("Press enter to end reviewing.");
+
+                'inner: loop {
+                    utils::clear_c();
+                    utils::print_new_lines(2);
+                    println!("Would you like to do this challenge again, or return to the main menu?");
+                    println!("Option 1: Do the challenge again.");
+                    println!("Option 0: Return to main menu.");
+                    utils::print_new_lines(1);
+
+                    option_selected_n = utils::get_numeric_input();
+
+                    if check_numeric_option_selectd(option_selected_n, 0, 2){
+                        if option_selected_n == 1 {
+                            println!("Wonderful!! Let's do this chalnge again!");
+                            utils::sleep_for_seconds(1);
+                            break 'inner; 
+
+                        }else{
+                            println!("Thank you! Returning to main menu.");
+                            utils::sleep_for_seconds(1);
+                            break 'outer; 
+                        }
+
+                    }
+                }
+            }else{
+                println!("Returning to main menu.");
+                utils::sleep_for_seconds(1);
+                break 'outer;
+            }        
         }
     }
 }
@@ -197,5 +249,6 @@ fn exit_program(){
     utils::print_with_spaces(PRINT_L, "Thank you for using this program!");
     utils::print_symbol(PRINT_L,'*');
     utils::print_new_lines(2);
+    utils::sleep_for_seconds(2);
     std::process::exit(0);
 }
