@@ -192,7 +192,7 @@ pub fn get_string_input() -> String {
             sleep_for_seconds(2)
         } 
     }
-    input
+    input.trim().to_owned()
 }
 
 pub fn get_any_input(text_string_for_info:&str){

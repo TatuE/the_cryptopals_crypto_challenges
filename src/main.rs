@@ -10,7 +10,7 @@ fn main() {
 
         let option_selected_n: u32 = utils::get_numeric_input();
 
-        if check_numeric_option_selectd(option_selected_n, 0, 4) {
+        if check_numeric_option_selected(option_selected_n, 0, 4) {
 
             match option_selected_n {
                 0 => exit_program(),
@@ -50,7 +50,7 @@ fn print_program_option(clear_screen_b:bool){
     utils::print_new_lines(1);
 }
 
-fn check_numeric_option_selectd(option_n: u32, min_value: u32, max_value: u32) -> bool {
+fn check_numeric_option_selected(option_n: u32, min_value: u32, max_value: u32) -> bool {
     let c: bool = option_n >= min_value && option_n <= max_value;
     if c {
         println!("You have selected option : {option_n}");
@@ -66,9 +66,8 @@ fn check_numeric_option_selectd(option_n: u32, min_value: u32, max_value: u32) -
 
 fn challenge_1(){
     let mut option_selected_n: u32;
-    let mut own_hex: String;
     'outer: loop {
-        let mut challenge_hex_s:&str = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d";
+        let mut challenge_hex_s= String::from("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d");
         utils::clear_c();
         utils::print_new_lines(2);
         utils::print_with_spaces(PRINT_L, "Challenge 1 : Convert hex to base64.");
@@ -83,27 +82,26 @@ fn challenge_1(){
 
         option_selected_n = utils::get_numeric_input();
 
-        if check_numeric_option_selectd(option_selected_n, 0, 2){
+        if check_numeric_option_selected(option_selected_n, 0, 2){
             if option_selected_n !=0 {
                 if option_selected_n == 1 {
                     println!("You have chosen to use the default hexadecimal value : {}", challenge_hex_s);
 
                 }else if option_selected_n == 2 {
                     println!("You have chosen to use you're own hexadecimal value.");
-                    own_hex = utils::get_string_input();
-                    challenge_hex_s = own_hex.as_str();
+                    challenge_hex_s = utils::get_string_input();
                 }
 
                 utils::print_new_lines(2);
                 utils::sleep_for_seconds(1);
 
-                let b64:String = crypto_tools::convert_hex_to_base64(challenge_hex_s);
+                let b64:String = crypto_tools::convert_hex_to_base64(challenge_hex_s.clone());
 
                 utils::display_processing(5, PRINT_L);
                 
                 utils::print_new_lines(2);
                 println!("The used the hexadecimal value : {}", challenge_hex_s);
-                println!("The base64 convertion is : {}", b64);
+                println!("The base64 conversion is : {}", b64);
                 utils::print_new_lines(2);
                 utils::get_any_input("Press enter to end reviewing.");
 
@@ -117,9 +115,9 @@ fn challenge_1(){
 
                     option_selected_n = utils::get_numeric_input();
 
-                    if check_numeric_option_selectd(option_selected_n, 0, 2){
+                    if check_numeric_option_selected(option_selected_n, 0, 2){
                         if option_selected_n == 1 {
-                            println!("Wonderful!! Let's do this chalnge again!");
+                            println!("Wonderful!! Let's do this challenge again!");
                             utils::sleep_for_seconds(1);
                             break 'inner; 
 
@@ -142,12 +140,10 @@ fn challenge_1(){
 
 fn challenge_2(){
     let mut option_selected_n: u32;
-    let mut own_hex_1: String;
-    let mut own_hex_2: String;
 
     'outer: loop {
-        let mut challenge_hex_s_1:&str = "1c0111001f010100061a024b53535009181c";
-        let mut challenge_hex_s_2:&str = "686974207468652062756c6c277320657965";
+        let mut challenge_hex_s_1:String = String::from("1c0111001f010100061a024b53535009181c");
+        let mut challenge_hex_s_2:String = String::from("686974207468652062756c6c277320657965");
         utils::clear_c();
         utils::print_new_lines(2);
         utils::print_with_spaces(PRINT_L, "Challenge 2 = Fixed XOR.");
@@ -159,13 +155,13 @@ fn challenge_2(){
         println!("Option 1: Use the default hexadecimal values:");
         println!("      Hexadecimal 1 value : {}", challenge_hex_s_1);
         println!("      Hexadecimal 2 value : {}", challenge_hex_s_2);
-        //println!("Option 2: Input you're own hexadecimal values.");
+        println!("Option 2: Input you're own hexadecimal values.");
         println!("Option 0: Return to main menu.");
         utils::print_new_lines(1);
 
         option_selected_n = utils::get_numeric_input();
         
-        if check_numeric_option_selectd(option_selected_n, 0, 1){
+        if check_numeric_option_selected(option_selected_n, 0, 2){
             if option_selected_n !=0 {
                 if option_selected_n == 1 {
                     println!("You have chosen to use the default hexadecimal values");
@@ -173,13 +169,16 @@ fn challenge_2(){
                     println!("      Hexadecimal 2 value : {}", challenge_hex_s_2);
                 }else if option_selected_n == 2 {
                     println!("You have chosen to use you're own hexadecimal values.");
-                    
+                    println!("Hexadecimal value 1");
+                    challenge_hex_s_1  = utils::get_string_input();
+                    println!("Hexadecimal value 2");
+                    challenge_hex_s_2 = utils::get_string_input();
                 }
 
                 utils::print_new_lines(2);
                 utils::sleep_for_seconds(1);
 
-                let xored:String = crypto_tools::fixed_xor(challenge_hex_s_1, challenge_hex_s_2);
+                let xored:String = crypto_tools::fixed_xor(challenge_hex_s_1.clone(), challenge_hex_s_2.clone());
 
                 utils::display_processing(5, PRINT_L);
                 
@@ -187,7 +186,7 @@ fn challenge_2(){
                 println!("The used the hexadecimal values");
                 println!("      Hexadecimal 1 value : {}", challenge_hex_s_1);
                 println!("      Hexadecimal 2 value : {}", challenge_hex_s_2);
-                println!("The base64 convertion is : {}", xored);
+                println!("The base64 conversion is : {}", xored);
                 utils::print_new_lines(2);
                 utils::get_any_input("Press enter to end reviewing.");
 
@@ -201,9 +200,9 @@ fn challenge_2(){
 
                     option_selected_n = utils::get_numeric_input();
 
-                    if check_numeric_option_selectd(option_selected_n, 0, 2){
+                    if check_numeric_option_selected(option_selected_n, 0, 2){
                         if option_selected_n == 1 {
-                            println!("Wonderful!! Let's do this chalnge again!");
+                            println!("Wonderful!! Let's do this challenge again!");
                             utils::sleep_for_seconds(1);
                             break 'inner; 
 

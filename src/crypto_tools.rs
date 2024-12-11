@@ -1,9 +1,9 @@
-pub fn convert_hex_to_base64(hex_s: &str) -> String{
+pub fn convert_hex_to_base64(hex_s: String) -> String{
 
     base64::encode(hex::decode(hex_s).unwrap())
 }
  
-pub fn fixed_xor(hex_s_a: &str, hex_s_b: &str) -> String{
+pub fn fixed_xor(hex_s_a: String, hex_s_b: String) -> String{
     let hex_a: Vec<u8> = hex::decode(hex_s_a).unwrap();
     let hex_b: Vec<u8> = hex::decode(hex_s_b).unwrap();
     let mut h_xor: Vec<u8> = Vec::new();
