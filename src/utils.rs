@@ -151,17 +151,9 @@ pub fn get_numeric_input() -> u32 {
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).expect("Failed to read line");
 
-        let input:&str = input.trim();
+        input = input.trim().to_owned();
 
-        let mut is_input_numeric: bool = true;
-
-        for c in input.chars(){
-            if !c.is_numeric(){
-                is_input_numeric = false;
-            }
-        }
-
-        if is_input_numeric {
+        if input.chars().all(|c: char| c.is_digit(10)) {
             n = match input.parse() {
                 Ok(num) => num,
                 Err(_) => continue,
@@ -174,7 +166,7 @@ pub fn get_numeric_input() -> u32 {
     }
     n 
 }
-
+/**
 pub fn get_string_input() -> String {
     print!("Please enter a text value: ");
     let mut input = String::new();
@@ -183,8 +175,6 @@ pub fn get_string_input() -> String {
         std::io::stdout().flush().unwrap();
         std::io::stdin().read_line(&mut input).expect("Failed to read line");
 
-        let input:&str = input.trim();
-
         if !input.is_empty() {
             break;
         }else{
@@ -192,16 +182,29 @@ pub fn get_string_input() -> String {
             sleep_for_seconds(2)
         } 
     }
+
     input.trim().to_owned()
 }
+*/
 
-pub fn get_hexadecimal() -> String{
-    
+pub fn get_hexadecimal_string_input() -> String{
+    print!("Please enter an even hexadecimal value: ");
+    let mut input = String::new();
 
-}
+    loop{
+        std::io::stdout().flush().unwrap();
+        std::io::stdin().read_line(&mut input).expect("Failed to read line");
 
-fn input_validation(t:&str) -> bool{
+        input = input.trim().to_owned();
 
+        if input.chars().count() % 2 == 0 && input.chars().all(|c: char| matches!(c, 'a'..='f' | 'A'..='F' |'0'..='9' )){
+            break;
+        }else{
+            println!("Input reveiced in wrong format, please input an even hexadecimal value value!");
+            sleep_for_seconds(2)
+        }
+    }
+    input
 }
 
 pub fn get_any_input(text_string_for_info:&str){

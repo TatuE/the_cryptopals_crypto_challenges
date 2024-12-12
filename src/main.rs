@@ -89,7 +89,7 @@ fn challenge_1(){
 
                 }else if option_selected_n == 2 {
                     println!("You have chosen to use you're own hexadecimal value.");
-                    challenge_hex_s = utils::get_string_input();
+                    challenge_hex_s = utils::get_hexadecimal_string_input();
                 }
 
                 utils::print_new_lines(2);
@@ -170,9 +170,9 @@ fn challenge_2(){
                 }else if option_selected_n == 2 {
                     println!("You have chosen to use you're own hexadecimal values.");
                     println!("Hexadecimal value 1");
-                    challenge_hex_s_1  = utils::get_string_input();
+                    challenge_hex_s_1  = utils::get_hexadecimal_string_input();
                     println!("Hexadecimal value 2");
-                    challenge_hex_s_2 = utils::get_string_input();
+                    challenge_hex_s_2 = utils::get_hexadecimal_string_input();
                 }
 
                 utils::print_new_lines(2);
