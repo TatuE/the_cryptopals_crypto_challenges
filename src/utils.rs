@@ -195,6 +195,15 @@ pub fn get_string_input() -> String {
     input.trim().to_owned()
 }
 
+pub fn get_hexadecimal() -> String{
+    
+
+}
+
+fn input_validation(t:&str) -> bool{
+
+}
+
 pub fn get_any_input(text_string_for_info:&str){
     print!("{text_string_for_info}");
     let mut input = String::new();
